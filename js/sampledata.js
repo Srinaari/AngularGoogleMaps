@@ -1,0 +1,8 @@
+Kedarnath – Kedarnath Temple (30.7352° N, 79.0669)
+Kaleshwaram – Kaleshwara Mukteeshwara swamy Temple (18.8110, 79.9067)
+Srikalahati – Srikalahasti Temple (13.749802, 79.698410)
+Kanchipuram – Ekambareswarar Temple (12.847604, 79.699798)
+Thiruvanaikaval – Jambukeswara Temple (10.853383, 78.705455)
+Tiruvannamalai – Annamalaiyar Temple (12.231942, 79.067694)
+Chidambaram – Nataraja Temple (11.399596, 79.693559)
+Rameswaram – Ramanathaswamy Temple(9.2881, 79.3174)

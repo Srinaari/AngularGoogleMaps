@@ -1,0 +1,16 @@
+<div class='marker-dtls-container col-xs-12 p0'>
+	<div ng-if='parameter.images'>
+		<div uib-carousel active="0" interval="2000" no-wrap="false" >
+			<div uib-slide ng-repeat="image in parameter.images" index="$index" ng-class="parameter.images.length>1 ? 'carousel-container' : ''">
+				<img ng-src="{{image}}" class="img-responsive center-block" alt="{{parameter.name}}">
+			</div>
+		</div>
+	</div>
+	<div class='clearfix'></div>
+	<div class='details-container p-10'>
+		<h1 class='m0'>{{parameter.name}}</h1>
+		<p>{{parameter.location}}</p>
+		<p>{{parameter.description}}</p>
+		<a ng-if='parameter.wiki' ng-href="{{parameter.wiki}}" class="wiki-link" target="_blank">Do Wiki</a>
+	</div>
+</div>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="googleMapsApp">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Google Maps App</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/app.css">
+      <link rel="stylesheet" href="css/markerDetails.css">
+      <link rel="stylesheet" href="css/locationForm.css">
+   </head>
+   <body ng-controller="GoogleMapsController">
+      <div class='loader m0 p0' ng-if='showLoader'>
+         <img src='images/ajax-loader.gif' class="img-responsive center-block loader-img" alt="loading"/>
+      </div>
+      <toaster-container class ='col-xs-12 p0 m0' toaster-options="{'time-out': 3000, 'close-button':false, 'animation-class': 'toast-top-full-width'}"></toaster-container>
+      <div class='fixed-container col-xs-12 p0'>
+         <div class='row bg-black header'>
+            <a href='javascript:void(0)'><img src="images/servicenow-logo.png" class="img-responsive center-block" alt="Service Now"></a>
+         </div>
+         <div class='p-10 options'>
+            <div class='p0 m0'>
+               <div class='map-options pull-right' ng-if='config.selectedCategory'>
+                  <a href="javascript:void(0)" ng-click='closeAll(); addLocation();'><img src="images/add-location2.png" class="img-responsive" alt="Add Location"></a>
+                  <a href="javascript:void(0)" ng-click='closeAll(); removeLocation();'><img src="images/remove-location.png" class="img-responsive" alt="Remove Location"></a>
+               </div>
+               <div class="btn-group dropdown-container pull-right" uib-dropdown keyboard-nav>
+                  <button id="simple-btn-keyboard-nav" type="button" class="btn" uib-dropdown-toggle>
+                  <span class="pr-10">{{config.categoryLabel}}</span>
+                  <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu m0 p0" uib-dropdown-menu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+                     <li role="menuitem" ng-repeat='category in categoryList'>
+                        <a href="javascript:void(0)" ng-click='categorySelected(category)'>{{category.label}}</a>
+                     </li>
+                  </ul>
+               </div>
+               <div class='clearfix'></div>
+            </div>
+         </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class='container-fluid app-container p0 m0'>
+      	<div class='map-container col-xs-12 p0' ng-class="config.modifyLocation ? 'col-md-9' : ''">
+	        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+	            <ui-gmap-markers models='config.markers' coords="'self'" icon="'icon'" options = "'options'" events="markerEvents.events" ng-if='config.markers'  fit="true">
+	               <ui-gmap-windows show="marker.model.show" doRebuildAll= "doRebuildAll" templateUrl="'templateUrl'" options="'windowOptions'" templateParameter="'data'" ng-cloak>
+	                  <div ng-non-bindable>
+	                  </div>
+	               </ui-gmap-windows>
+	            </ui-gmap-markers>
+	         </ui-gmap-google-map>
+         </div>
+
+         <!-- Add/Modify Location-->
+         <div class='modify-location-container col-xs-12 col-md-3' ng-if='config.modifyLocation'>
+         	<add-or-remove-location remove-location= 'config.removeLocation' location-dtls='locationDtls' category-list='categoryList'></add-or-remove-location>
+         </div>
+      </div>
+      <script type="text/javascript" src='js/vendor/jquery.min.js'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+      <script type="text/javascript" src='js/vendor/angular-ui.min.js'></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+      <script type="text/javascript" src='http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js'></script>  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script> 
+      <script type="text/javascript" src='js/app.js'></script>
+      <script type="text/javascript" src='js/app.controller.js'></script>
+      <script type="text/javascript" src='js/app.factory.js'></script>
+      <script type="text/javascript" src='js/addOrRemoveLocation.directive.js'></script>
+   </body>
+</html>

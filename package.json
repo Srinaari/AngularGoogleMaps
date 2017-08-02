@@ -1,0 +1,8 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "devDependencies": {
+    "express": "^4.15.2"
+  },
+  "dependencies": {}
+}
