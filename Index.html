@@ -43,7 +43,7 @@
       </div>
       <div class="clearfix"></div>
       <div class='container-fluid app-container p0 m0'>
-      	<div class='map-container col-xs-12 p0' ng-class="config.modifyLocation ? 'col-md-9' : ''">
+      	<div class='map-container col-xs-12 p0' ng-class="(config.addLocation || config.removeLocation) ? 'col-md-9' : ''">
 	        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
 	            <ui-gmap-markers models='config.markers' coords="'self'" icon="'icon'" options = "'options'" events="markerEvents.events" ng-if='config.markers'  fit="true">
 	               <ui-gmap-windows show="marker.model.show" doRebuildAll= "doRebuildAll" templateUrl="'templateUrl'" options="'windowOptions'" templateParameter="'data'" ng-cloak>
@@ -55,8 +55,9 @@
          </div>
 
          <!-- Add/Modify Location-->
-         <div class='modify-location-container col-xs-12 col-md-3' ng-if='config.modifyLocation'>
-         	<add-or-remove-location remove-location= 'config.removeLocation' location-dtls='locationDtls' category-list='categoryList'></add-or-remove-location>
+         <div class='modify-location-container col-xs-12 col-md-3' >
+         	<add-location location-dtls='locationDtls' category-list='categoryList' ng-if='config.addLocation'></add-location>
+            <remove-location location-dtls='locationDtls' category-list='categoryList' ng-if='config.removeLocation'></remove-location>
          </div>
       </div>
       <script type="text/javascript" src='js/vendor/jquery.min.js'></script>
@@ -69,6 +70,7 @@
       <script type="text/javascript" src='js/app.js'></script>
       <script type="text/javascript" src='js/app.controller.js'></script>
       <script type="text/javascript" src='js/app.factory.js'></script>
-      <script type="text/javascript" src='js/addOrRemoveLocation.directive.js'></script>
+      <script type="text/javascript" src='js/addLocation.directive.js'></script>
+      <script type="text/javascript" src='js/removeLocation.directive.js'></script>
    </body>
 </html>

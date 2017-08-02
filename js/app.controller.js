@@ -11,9 +11,10 @@ app.controller("GoogleMapsController", ['$scope', 'uiGmapGoogleMapApi', 'toaster
     $scope.config.categoryLabel = "-- Select Category --";
 
     /*Clearing all the flags used in controller*/
-    $scope.locationDtls = {};
+    
     $scope.closeAll = function() {
-        $scope.config.modifyLocation = false;
+        $scope.locationDtls = {};
+        $scope.config.addLocation = false;
         $scope.config.removeLocation = false;
     }
 
@@ -71,19 +72,18 @@ app.controller("GoogleMapsController", ['$scope', 'uiGmapGoogleMapApi', 'toaster
 
     /*Add location link click*/
     $scope.addLocation = function() {
-        $scope.config.modifyLocation = true;
-        $scope.config.removeLocation = false;
+        $scope.closeAll();
+        $scope.config.addLocation = true;
     }
 
     /*Remove location link click*/
     $scope.removeLocation = function() {
-        $scope.config.modifyLocation = true;
+        $scope.closeAll();
         $scope.config.removeLocation = true;
     }
 
     /*Adding location*/
     $scope.$on('addLocation', function() {
-        $scope.closeAll();
         category = $scope.locationDtls.category.key;
         enteredData = {
             "latitude": $scope.locationDtls.latitude.toString(),
@@ -105,13 +105,13 @@ app.controller("GoogleMapsController", ['$scope', 'uiGmapGoogleMapApi', 'toaster
             index = $scope.config.categories[category].length - 1;
             $scope.config.markers.push(appFactory.getConfigObject(enteredData, index, category));
         }
-        $scope.locationDtls = {};
+
+        $scope.closeAll();
         toaster.success('Location added successfully!!!');
     });
 
     /*Removing location*/
     $scope.$on('removeLocation', function() {
-        $scope.closeAll();
         category = $scope.locationDtls.category.key;
 
         function getIndex(obj) {
@@ -135,7 +135,7 @@ app.controller("GoogleMapsController", ['$scope', 'uiGmapGoogleMapApi', 'toaster
         }
 
         appFactory.setCategoriesInfo($scope.config.categories);
-        $scope.locationDtls = {};
+        $scope.closeAll();
         toaster.success('Location removed successfully!!!');
     });
 

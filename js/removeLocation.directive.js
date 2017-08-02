@@ -1,11 +1,10 @@
-app.directive('addOrRemoveLocation', function(appFactory){
+app.directive('removeLocation', function(appFactory){
 	return {
-	    templateUrl: '../addOrRemoveLocation.html',
+	    templateUrl: '../removeLocation.html',
 	    restrict: 'E',          
 	    scope: {
 	    	locationDtls: '=',
-	    	categoryList: '=',
-	    	removeLocation: '=',
+	    	categoryList: '='
 	    },
 	    controller: function($scope){  
 	    	var categoryArray;
@@ -27,12 +26,7 @@ app.directive('addOrRemoveLocation', function(appFactory){
 
 	    	$scope.closeForm = function(){
 	    		$scope.$emit('cancelLocation');
-	    	}  
-	    	$scope.addLocation = function(){
-	    		if($scope.locationForm.$valid){
-	    			$scope.$emit('addLocation');
-	    		}
-	    	} 
+	    	}
 	    	$scope.removeLocationClicked = function(){
 	    		if($scope.locationForm.$valid){
 	    			$scope.$emit('removeLocation');

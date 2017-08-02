@@ -63,9 +63,9 @@ ul, .options{
 .app-container{
   padding-top: 128px !important;
 }
-.map-container{
+/*.map-container{
   box-shadow: 5px 12px 5px cadetblue;
-}
+}*/
 ul li{
     position: relative;
     top: 1px;

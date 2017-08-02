@@ -1,0 +1,15 @@
+<form novalidate name='locationForm' class='location-form'>
+	<p><span class='mandatory-label'>*</span>&nbsp;Fields are mandatory</p>
+	<div class="form-group">
+		<label for="category" class='m0'>Category&nbsp;<span class='mandatory-label'>*</span></label>
+	    <select id="category" class="form-control" ng-required='true' ng-model="locationDtls.category" ng-options="option.label for option in categoryList" ng-change='categoryChanged(locationDtls.category)'><option value="">Category</option></select>
+	</div>
+	<div class="form-group">
+		<label for="removeloc" class='m0'>Remove Location&nbsp;<span class='mandatory-label'>*</span></label>
+	    <select id="removeloc" class="form-control" ng-required='true' ng-model="locationDtls.removeloc" ng-options="option.label for option in locationDtls.removeLocations" ng-disabled='!locationDtls.removeLocations.length'><option value="">Remove Location</option></select>
+	</div>
+	<div class='pull-right'>
+		<button type="button" class="btn btn-warning" ng-click='closeForm()'>Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click='removeLocationClicked()' ng-disabled="locationForm.$error.required">Remove location</button>
+	</div>
+</form>
